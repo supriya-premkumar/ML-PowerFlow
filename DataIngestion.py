@@ -14,8 +14,6 @@ def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tag
     host = '54.193.103.207'
     port = 8086
     dbname= 'ml-powerflow'
-    # user = 'ubuntu'
-    # password = 'Slac_2018'
     client = InfluxDBClient(host, port, user, password, dbname)
 
     print('Creating Database %s'%dbname)
@@ -37,11 +35,6 @@ def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tag
         reader = csv.DictReader(csvfile, delimiter=delimiter)
         c=-1
         for row in reader:
-            # print(unix_time_hours(datetime.datetime.strptime(row[timecolumn],timeformat)) * 1000000)
-            # timestamp = unix_time_hours(datetime.datetime.strptime(row[timecolumn],timeformat)) * 1000000 # in nanoseconds
-            # print(timestamp)
-
-
             timestamp = datetime.datetime.now() + timedelta(hours = c, seconds = 0)
             c=c-1
             tags = {}

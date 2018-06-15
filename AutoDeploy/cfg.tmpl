@@ -1,0 +1,6 @@
+c = get_config()  # Get the config object.
+c.NotebookApp.certfile = u'/home/ubuntu/ssl/cert.pem' # path to the certificate we generated
+c.NotebookApp.keyfile = u'/home/ubuntu/ssl/cert.key' # path to the certificate key we generated
+c.NotebookApp.ip = '*'  # Serve notebooks locally.
+c.NotebookApp.open_browser = False  # Do not open a browser window by default when using notebooks.
+c.NotebookApp.password = 'PASSWD_SHA'

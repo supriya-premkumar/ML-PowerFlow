@@ -75,7 +75,7 @@ def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tag
                 datapoints = []
 
 
-    # write rest
+
     if len(datapoints) > 0:
         print('Read %d lines'%count)
         print('Inserting %d datapoints...'%(len(datapoints)))
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--server', nargs='?', default='54.193.103.207:8086', help='Server address. Default:54.193.103.207:8086')
     parser.add_argument('-u', '--user', nargs='?', default='ubuntu', help='user name.')
     parser.add_argument('-p', '--password', nargs='?', default='Slac_2018', help='password')
-    # parser.add_argument('--dbname', nargs='?', required=false, default='power-data', help="DataBase name")
+
     parser.add_argument('-m', '--metricname', nargs='?', default='phase_angle',
                         help='Metric column name. Default: value')
     parser.add_argument('-tc', '--timecolumn', nargs='?', default='timestamp',
@@ -109,9 +109,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--tagcolumns', nargs='?', default='host',
                         help='List of csv columns to use as tags, separated by comma, e.g.: host,data_center. Default: host')
-    #
-    # parser.add_argument('-g', '--gzip', action='store_true', default=False,
-    #                     help='Compress before sending to influxdb.')
+
 
     args = parser.parse_args()
     loadCsv(args.input, args.server, args.user, args.password, args.metricname, args.timecolumn, args.timeformat, args.tagcolumns, args.fieldcolumns, args.delimiter)

@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# powerflow auto gen creds
+AutoDeploy/powerflow-creds-us-west-2
+AutoDeploy/cfg.append
+AutoDeploy/result.out

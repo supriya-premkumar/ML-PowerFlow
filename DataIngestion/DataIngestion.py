@@ -28,7 +28,7 @@ def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tag
 
     #Open Csv
     datapoints =[]
-    file = "angle.csv"
+    file = "csv/angle.csv"
     count = 0
     batchsize = 20000
     with open(file, 'r') as csvfile:

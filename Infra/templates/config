@@ -1,0 +1,7 @@
+export IMAGE_ID="ami-db710fa3" #us-west-1 (Amazon Linux AMI- N.California)
+export SG_ID="sg-ee4f3b96"
+export SG_NAME="launch-wizard-12"
+export REGION="us-west-2"
+export INSTANCE_TYPE="t2.micro"
+export PREFIX="VADER-CodeReview"
+export ADMIN_USER="ubuntu"

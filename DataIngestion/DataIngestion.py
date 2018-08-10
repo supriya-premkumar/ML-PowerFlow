@@ -11,7 +11,7 @@ def unix_time_hours(dt):
     return int((dt-epoch).total_seconds() * 1000)
 
 def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tagcolumns, fieldcolumns, delimiter):
-    host = '35.166.159.164'
+    host = '34.219.133.145'
     port = 8086
     dbname= 'ml-powerflow'
     client = InfluxDBClient(host, port, user, password, dbname)

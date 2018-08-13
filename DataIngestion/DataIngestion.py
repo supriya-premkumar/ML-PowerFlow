@@ -11,7 +11,7 @@ def unix_time_hours(dt):
     return int((dt-epoch).total_seconds() * 1000)
 
 def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tagcolumns, fieldcolumns, delimiter):
-    host = '54.193.103.207'
+    host = '35.166.159.164'
     port = 8086
     dbname= 'ml-powerflow'
     client = InfluxDBClient(host, port, user, password, dbname)
@@ -28,7 +28,7 @@ def loadCsv(csvfile, server, user, password, metric, timecolumn, timeformat, tag
 
     #Open Csv
     datapoints =[]
-    file = "csv/angle.csv"
+    file = "csv/voltage.csv"
     count = 0
     batchsize = 20000
     with open(file, 'r') as csvfile:

@@ -2,6 +2,7 @@
 set -xe
 wget https://dl.influxdata.com/influxdb/releases/influxdb_1.5.3_amd64.deb
 sudo dpkg -i influxdb_1.5.3_amd64.deb
+sudo service influxdb start
 
 
 # Installing Docker
@@ -11,6 +12,12 @@ sudo apt-get update
 apt-cache policy docker-ce
 sudo apt-get install -y docker-ce
 # sudo systemctl status docker
+
+# Install Pandas
+sudo pip install pandas
+
+# Install cvxopt
+sudo pip install cvxopt
 
 #Install Screen
 sudo apt-get install -y screen

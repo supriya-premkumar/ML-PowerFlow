@@ -81,13 +81,9 @@ function create_security_group()
 	echo "************ Creating Security Group ******************"
 	set +e
 	sg_vader=$(aws --region $REGION --output json ec2 create-security-group --group-name $SG_NAME --description "VADER-DATA-GridLabD Security Group" | jq .GroupId | sed s_'"'__g)
-	$aws_add_port_cmd --protocol tcp --port 22 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 80 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 6267 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 8091 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 8090 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 3306 --cidr 0.0.0.0/0
-	$aws_add_port_cmd --protocol tcp --port 443 --cidr 0.0.0.0/0
+	source templates/sg_config.sh
+
+
 	return $sg_vader
 
 }
@@ -149,6 +145,8 @@ function bringup_svcs()
 {
 	# Run the ssh command with -t as we need the local
   $ssh_cmd -i "$KEY_PATH/$KEY_NAME.pem" -tt $ADMIN_USER@$APP_NODE_IP 'bash -l -c export PATH=$PATH:~/ML-PowerFlow/App/DataStream && bash -l -c ls && export AWS_ACCESS_KEY_ID='"'$AWS_ACCESS_KEY_ID'"' && export DB_ENDPOINT='"'$DB_NODE_IP'"' && export AWS_SECRET_ACCESS_KEY='"'$AWS_SECRET_ACCESS_KEY'"' && ~/ML-PowerFlow/App/DataStream/kinesis.sh vader.data.chargepoint us-west-1'
+	cat templates/result.out
+
 }
 
 
